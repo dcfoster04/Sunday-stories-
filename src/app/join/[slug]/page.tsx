@@ -31,7 +31,7 @@ export default async function JoinPage({
               href="/"
               className="font-display text-sm font-black tracking-tight text-ink-950"
             >
-              SUNDAY<span className="text-gold-600">STORIES</span>
+              SUNDAY<span className="text-flare-600">STORIES</span>
             </Link>
           </div>
         </Container>
@@ -39,8 +39,8 @@ export default async function JoinPage({
 
       <section className="bg-ink-950 bg-grain py-14 text-center sm:py-20">
         <Container size="narrow">
-          <p className="kicker text-gold-400">{league.leagueName}</p>
-          <h1 className="mx-auto mt-4 max-w-md text-balance font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-paper-100 sm:text-5xl">
+          <p className="kicker text-flare-400">{league.leagueName}</p>
+          <h1 className="mx-auto mt-4 max-w-md text-balance font-display text-3xl font-black uppercase leading-[1.02] tracking-tighter text-paper-100 sm:text-5xl">
             Your league needs better sources.
           </h1>
           <p className="mx-auto mt-5 max-w-sm text-balance text-[15px] leading-relaxed text-mist-300">

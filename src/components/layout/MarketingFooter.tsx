@@ -8,7 +8,7 @@ export function MarketingFooter() {
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
           <div>
             <p className="font-display text-lg font-black tracking-tight text-ink-950">
-              SUNDAY<span className="text-gold-500">STORIES</span>
+              SUNDAY<span className="text-flare-600">STORIES</span>
             </p>
             <p className="mt-2 max-w-sm text-sm text-ink-950/50">
               Your fantasy league has a story. We cover it.

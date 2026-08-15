@@ -22,7 +22,7 @@ export default function DemoPage() {
             <Kicker tone="paper" className="justify-center">
               A preview, not a real league
             </Kicker>
-            <h1 className="mt-6 text-balance font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-paper-100 sm:text-6xl">
+            <h1 className="mt-6 text-balance font-display text-4xl font-black uppercase leading-[1.02] tracking-tighter text-paper-100 sm:text-6xl">
               This is what your league&rsquo;s coverage looks like.
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-balance text-lg leading-relaxed text-mist-300">
@@ -37,8 +37,9 @@ export default function DemoPage() {
           <Container size="narrow" className="space-y-10">
             {DEMO_STORIES.map((story, i) => (
               <Reveal key={story.title} delay={i * 80}>
-                <article className="hairline-paper rounded-2xl bg-white p-8 shadow-[var(--shadow-card)] sm:p-10">
-                  <Kicker tone="crimson">{story.kicker}</Kicker>
+                <article className="relative overflow-hidden hairline-paper rounded-lg bg-white p-8 shadow-[var(--shadow-card)] sm:p-10">
+                  <span className="absolute inset-x-0 top-0 h-[3px] bg-flare-400" />
+                  <Kicker tone="flare">{story.kicker}</Kicker>
                   <h2 className="mt-3 font-display text-2xl font-bold leading-snug text-ink-950 sm:text-3xl">
                     {story.title}
                   </h2>
@@ -59,7 +60,7 @@ export default function DemoPage() {
         <section className="border-t border-ink-950/8 py-20 text-center sm:py-28">
           <Container size="narrow">
             <Reveal>
-              <h2 className="text-balance font-display text-3xl font-black uppercase leading-tight tracking-tight text-ink-950 sm:text-4xl">
+              <h2 className="text-balance font-display text-3xl font-black uppercase leading-tight tracking-tighter text-ink-950 sm:text-4xl">
                 Your league&rsquo;s version is seven minutes away.
               </h2>
               <div className="mt-8">

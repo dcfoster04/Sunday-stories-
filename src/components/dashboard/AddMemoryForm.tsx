@@ -100,7 +100,7 @@ export function AddMemoryForm({
   }
 
   return (
-    <div className="rounded-2xl border border-ink-950/10 bg-white p-6">
+    <div className="rounded-lg border border-ink-950/10 bg-white p-6">
       <div>
         <Label>What kind of lore is this?</Label>
         <div className="flex flex-wrap gap-2">

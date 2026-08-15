@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 import { EXAMPLE_CARDS } from "@/content/marketing";
 
@@ -9,31 +10,40 @@ export function DramaSection() {
       <Container size="wide">
         <Reveal className="text-center">
           <p className="kicker text-ink-950/40">The scores are already everywhere.</p>
-          <h2 className="mx-auto mt-4 max-w-2xl text-balance font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-ink-950 sm:text-5xl">
+          <h2 className="mx-auto mt-4 max-w-2xl text-balance font-display text-4xl font-black uppercase leading-[1.02] tracking-tighter text-ink-950 sm:text-5xl">
             We cover the drama.
           </h2>
         </Reveal>
 
         <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {EXAMPLE_CARDS.map((card, i) => (
-            <Reveal key={card.title} delay={i * 60}>
+            <Reveal key={card.title} delay={i * 60} className={i === 0 ? "lg:col-span-2" : undefined}>
               <article
                 className={cn(
-                  "group relative flex h-full flex-col overflow-hidden rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1",
+                  "group relative flex h-full flex-col overflow-hidden rounded-lg p-7 transition-transform duration-300 hover:-translate-y-1",
                   card.tone === "dark"
                     ? "bg-ink-950 text-paper-100 shadow-[var(--shadow-card-dark)]"
                     : "hairline-paper bg-white text-ink-950 shadow-[var(--shadow-card)]",
                 )}
               >
+                {/* broadcast-style top rule */}
                 <span
                   className={cn(
-                    "kicker",
-                    card.tone === "dark" ? "text-gold-400" : "text-crimson-500",
+                    "absolute inset-x-0 top-0 h-[3px]",
+                    card.tone === "dark" ? "bg-flare-400" : "bg-ink-950/80",
+                  )}
+                />
+
+                <Badge tone={card.tone === "dark" ? "flare" : "outline"} className="w-fit">
+                  {card.tag}
+                </Badge>
+
+                <h3
+                  className={cn(
+                    "mt-4 text-balance font-display font-bold leading-snug",
+                    i === 0 ? "text-2xl sm:text-3xl" : "text-xl",
                   )}
                 >
-                  {card.tag}
-                </span>
-                <h3 className="mt-4 font-display text-xl font-bold leading-snug">
                   {card.title}
                 </h3>
                 <p

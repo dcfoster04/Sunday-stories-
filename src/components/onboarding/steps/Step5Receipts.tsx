@@ -129,7 +129,7 @@ export function Step5Receipts({
         )}
 
         {adding === "quote" && (
-          <div className="space-y-4 rounded-2xl border border-ink-950/10 bg-white p-5">
+          <div className="space-y-4 rounded-lg border border-ink-950/10 bg-white p-5">
             <div>
               <Label>The quote</Label>
               <Textarea
@@ -177,7 +177,7 @@ export function Step5Receipts({
         )}
 
         {adding === "moment" && (
-          <div className="space-y-4 rounded-2xl border border-ink-950/10 bg-white p-5">
+          <div className="space-y-4 rounded-lg border border-ink-950/10 bg-white p-5">
             <div>
               <Label>What happened</Label>
               <Input
@@ -207,7 +207,7 @@ export function Step5Receipts({
         )}
 
         {adding === "screenshot" && (
-          <div className="space-y-4 rounded-2xl border border-ink-950/10 bg-white p-5">
+          <div className="space-y-4 rounded-lg border border-ink-950/10 bg-white p-5">
             <input
               ref={fileInput}
               type="file"

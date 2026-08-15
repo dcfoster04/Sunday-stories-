@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Kicker } from "@/components/ui/Card";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { MEMBER_RAPID_FIRE_PROMPTS } from "@/lib/validation";
 
 export type DashboardSubmission = {
@@ -36,10 +37,10 @@ export function SubmissionsInbox({
 
   if (submissions.length === 0) {
     return (
-      <p className="rounded-xl bg-ink-950/5 p-4 text-sm text-ink-950/45">
-        No submissions yet. Share your contribution link with the league to
-        start collecting sources.
-      </p>
+      <EmptyState
+        title="No submissions yet"
+        description="Share your contribution link with the league to start collecting sources."
+      />
     );
   }
 
@@ -51,11 +52,11 @@ export function SubmissionsInbox({
         return (
           <div
             key={s.id}
-            className="rounded-2xl border border-ink-950/8 bg-white p-5"
+            className="rounded-lg border border-ink-950/8 bg-white p-5"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
-                <Kicker tone={s.reviewedByCommissioner ? "ink" : "crimson"}>
+                <Kicker tone={s.reviewedByCommissioner ? "ink" : "flare"}>
                   {s.reviewedByCommissioner ? "Reviewed" : "New"}
                 </Kicker>
                 <p className="mt-1 font-display text-sm font-bold text-ink-950">

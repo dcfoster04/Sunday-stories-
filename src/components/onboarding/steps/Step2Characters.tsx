@@ -5,6 +5,7 @@ import { StepShell } from "@/components/ui/StepShell";
 import { Label, Input, Textarea } from "@/components/ui/Field";
 import { Chip } from "@/components/ui/Chip";
 import { Button } from "@/components/ui/Button";
+import { EmptyState } from "@/components/ui/EmptyState";
 import type { DraftOwner } from "../state";
 import { newOwner } from "../state";
 import { ARCHETYPES, MAX_ARCHETYPES_PER_OWNER } from "@/lib/types";
@@ -32,7 +33,7 @@ function OwnerCard({
   }
 
   return (
-    <div className="rounded-2xl border border-ink-950/10 bg-white p-5">
+    <div className="rounded-lg border border-ink-950/10 bg-white p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1">
           <Input
@@ -182,9 +183,10 @@ export function Step2Characters({
         </Button>
 
         {owners.length === 0 && (
-          <p className="text-center text-sm text-ink-950/40">
-            We&rsquo;ll ask the rest of the league to help fill in the details.
-          </p>
+          <EmptyState
+            title="No managers added yet"
+            description="Add your owners above — we'll ask the rest of the league to help fill in the details, so don't worry about being thorough."
+          />
         )}
       </div>
     </StepShell>

@@ -96,10 +96,10 @@ export function Step1League({
                 type="button"
                 key={tone}
                 onClick={() => update({ tone })}
-                className={`rounded-xl border p-4 text-left transition-colors ${
+                className={`rounded-lg border p-4 text-left transition-colors ${
                   league.tone === tone
-                    ? "border-ink-950 bg-ink-950 text-paper-100"
-                    : "border-ink-950/12 bg-white text-ink-950 hover:border-ink-950/30"
+                    ? "border-flare-400 bg-flare-400 text-ink-950 shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]"
+                    : "border-ink-950/15 bg-white text-ink-950 hover:border-ink-950/35"
                 }`}
               >
                 <p className="font-display text-sm font-bold uppercase tracking-wide">
@@ -107,7 +107,7 @@ export function Step1League({
                 </p>
                 <p
                   className={`mt-1 text-xs ${
-                    league.tone === tone ? "text-mist-400" : "text-ink-950/50"
+                    league.tone === tone ? "text-ink-950/60" : "text-ink-950/50"
                   }`}
                 >
                   {TONE_LABELS[tone].split(" — ")[1] ?? ""}

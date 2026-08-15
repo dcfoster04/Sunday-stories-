@@ -31,7 +31,7 @@ function NewRivalryForm({
   }
 
   return (
-    <div className="rounded-2xl border border-dashed border-ink-950/20 bg-white p-5">
+    <div className="rounded-lg border border-dashed border-ink-950/20 bg-white p-5">
       <Label>Pick two rivals</Label>
       <div className="flex flex-wrap gap-2">
         {owners.map((o) => (

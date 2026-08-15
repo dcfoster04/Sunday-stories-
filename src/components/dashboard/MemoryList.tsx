@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Kicker } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { MEMORY_TYPE_LABELS, type MemoryType } from "@/lib/types";
 
 export type DashboardMemory = {
@@ -19,12 +20,14 @@ export function MemoryList({
   memories,
   ownerNamesById,
   onDeleted,
-  emptyLabel = "No lore yet — add the first one above.",
+  emptyTitle = "No lore yet",
+  emptyDescription = "Add the first one above.",
 }: {
   memories: DashboardMemory[];
   ownerNamesById: Record<string, string>;
   onDeleted: (id: string) => void;
-  emptyLabel?: string;
+  emptyTitle?: string;
+  emptyDescription?: string;
 }) {
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
@@ -36,15 +39,18 @@ export function MemoryList({
   }
 
   if (memories.length === 0) {
-    return <p className="rounded-xl bg-ink-950/5 p-4 text-sm text-ink-950/45">{emptyLabel}</p>;
+    return <EmptyState title={emptyTitle} description={emptyDescription} />;
   }
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {memories.map((m) => (
-        <div key={m.id} className="rounded-2xl border border-ink-950/8 bg-white p-5">
+        <div
+          key={m.id}
+          className="rounded-lg border border-l-[3px] border-ink-950/8 border-l-flare-400 bg-white p-5"
+        >
           <div className="flex items-start justify-between gap-3">
-            <Kicker tone="crimson">{MEMORY_TYPE_LABELS[m.type as MemoryType] ?? m.type}</Kicker>
+            <Badge tone="outline">{MEMORY_TYPE_LABELS[m.type as MemoryType] ?? m.type}</Badge>
             <button
               onClick={() => remove(m.id)}
               disabled={deletingId === m.id}
@@ -53,7 +59,7 @@ export function MemoryList({
               {deletingId === m.id ? "Removing..." : "Remove"}
             </button>
           </div>
-          <h3 className="mt-2 font-display text-base font-bold text-ink-950">{m.title}</h3>
+          <h3 className="mt-3 font-display text-base font-bold text-ink-950">{m.title}</h3>
           <p className="mt-1 text-sm leading-relaxed text-ink-950/60">{m.description}</p>
           {m.imageUrl && (
             // eslint-disable-next-line @next/next/no-img-element

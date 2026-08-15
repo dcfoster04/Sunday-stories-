@@ -22,10 +22,10 @@ export function Chip({
       disabled={disabled}
       aria-pressed={selected}
       className={cn(
-        "rounded-full border px-4 py-2 text-sm font-medium transition-all duration-150",
+        "rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-150",
         selected
-          ? "border-ink-950 bg-ink-950 text-paper-100"
-          : "border-ink-950/15 bg-white text-ink-950/70 hover:border-ink-950/40 hover:text-ink-950",
+          ? "border-flare-400 bg-flare-400 text-ink-950 shadow-[0_1px_0_rgba(255,255,255,0.35)_inset]"
+          : "border-ink-950/20 bg-white text-ink-950/70 hover:border-ink-950/50 hover:text-ink-950",
         disabled && "cursor-not-allowed opacity-40",
         className,
       )}

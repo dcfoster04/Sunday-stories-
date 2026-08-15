@@ -41,14 +41,15 @@ export function Completion({
   return (
     <div className="mx-auto w-full max-w-2xl text-center">
       <Reveal>
-        <Kicker tone="crimson">Sunday Stories has met your league.</Kicker>
-        <h1 className="mx-auto mt-4 max-w-xl text-balance font-display text-3xl font-black uppercase leading-tight tracking-tight text-ink-950 sm:text-5xl">
+        <Kicker tone="flare">Sunday Stories has met your league.</Kicker>
+        <h1 className="mx-auto mt-4 max-w-xl text-balance font-display text-3xl font-black uppercase leading-tight tracking-tighter text-ink-950 sm:text-5xl">
           Scouting Report
         </h1>
       </Reveal>
 
       <Reveal delay={100}>
-        <div className="mt-8 rounded-2xl bg-ink-950 bg-grain p-8 text-left shadow-[var(--shadow-card-dark)] sm:p-10">
+        <div className="relative mt-8 overflow-hidden rounded-lg bg-ink-950 bg-grain p-8 text-left shadow-[var(--shadow-card-dark)] sm:p-10">
+          <span className="absolute inset-x-0 top-0 h-[3px] bg-flare-400" />
           <p className="whitespace-pre-line font-serif text-lg italic leading-relaxed text-paper-100 sm:text-xl">
             {scoutingReport}
           </p>

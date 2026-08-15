@@ -49,25 +49,31 @@ export function DashboardChrome({
 
   return (
     <div className="min-h-screen bg-paper-200">
-      <header className="border-b border-ink-950/8 bg-paper-100">
+      {/* dark masthead — deliberately echoes the marketing site's cinematic
+          sections so the dashboard reads as the same broadcast brand, not
+          a bolted-on generic admin panel */}
+      <header className="bg-ink-950">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
           <div className="flex items-center gap-6">
-            <Link href="/dashboard/league" className="font-display text-base font-black tracking-tight text-ink-950">
-              SUNDAY<span className="text-gold-600">STORIES</span>
+            <Link
+              href="/dashboard/league"
+              className="font-display text-base font-black tracking-tight text-paper-100"
+            >
+              SUNDAY<span className="text-flare-400">STORIES</span>
             </Link>
-            <span className="hidden text-sm text-ink-950/40 sm:inline">{leagueName}</span>
+            <span className="hidden text-sm text-mist-500 sm:inline">{leagueName}</span>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={copyLink}
-              className="hidden rounded-full border border-ink-950/12 px-4 py-2 text-xs font-semibold text-ink-950/70 hover:border-ink-950/30 sm:block"
+              className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-mist-300 transition-colors hover:border-white/35 hover:text-paper-100 sm:block"
             >
               {copied ? "Link copied!" : "Copy invite link"}
             </button>
             <button
               onClick={signOut}
               disabled={signingOut}
-              className="text-xs font-semibold text-ink-950/40 hover:text-ink-950"
+              className="text-xs font-semibold text-mist-500 transition-colors hover:text-paper-100"
             >
               Sign out
             </button>
@@ -81,10 +87,10 @@ export function DashboardChrome({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "whitespace-nowrap border-b-2 px-3 py-3 text-sm font-medium transition-colors",
+                  "whitespace-nowrap border-b-[3px] px-3 py-3 text-sm font-semibold transition-colors",
                   active
-                    ? "border-gold-500 text-ink-950"
-                    : "border-transparent text-ink-950/45 hover:text-ink-950",
+                    ? "border-flare-400 text-paper-100"
+                    : "border-transparent text-mist-500 hover:text-paper-200",
                 )}
               >
                 {item.label}

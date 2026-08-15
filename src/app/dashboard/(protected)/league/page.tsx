@@ -9,7 +9,7 @@ export default async function DashboardLeaguePage() {
   return (
     <div className="mx-auto max-w-2xl">
       <p className="kicker text-ink-950/40">League</p>
-      <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tight text-ink-950">
+      <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tighter text-ink-950">
         League Settings
       </h1>
       <p className="mt-2 text-sm text-ink-950/55">
@@ -36,8 +36,9 @@ export default async function DashboardLeaguePage() {
       </div>
 
       {league.leagueSummary && (
-        <div className="mt-10 rounded-2xl bg-ink-950 bg-grain p-6">
-          <p className="kicker text-gold-400">Current scouting report</p>
+        <div className="relative mt-10 overflow-hidden rounded-lg bg-ink-950 bg-grain p-6">
+          <span className="absolute inset-x-0 top-0 h-[3px] bg-flare-400" />
+          <p className="kicker text-flare-400">Current scouting report</p>
           <p className="mt-3 whitespace-pre-line font-serif text-base italic leading-relaxed text-paper-100">
             {league.leagueSummary}
           </p>

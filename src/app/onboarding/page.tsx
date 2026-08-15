@@ -15,7 +15,7 @@ export default function OnboardingPage() {
         <Container size="wide">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="font-display text-base font-black tracking-tight text-ink-950">
-              SUNDAY<span className="text-gold-600">STORIES</span>
+              SUNDAY<span className="text-flare-600">STORIES</span>
             </Link>
             <p className="hidden text-sm text-ink-950/45 sm:block">
               Teach Sunday Stories Your League

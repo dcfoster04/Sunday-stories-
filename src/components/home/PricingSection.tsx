@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
+import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 import { PRICING_TIERS } from "@/content/pricing";
 
@@ -10,7 +11,7 @@ export function PricingSection() {
       <Container size="wide">
         <Reveal className="text-center">
           <p className="kicker text-ink-950/40">Pricing</p>
-          <h2 className="mx-auto mt-4 max-w-xl text-balance font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-ink-950 sm:text-5xl">
+          <h2 className="mx-auto mt-4 max-w-xl text-balance font-display text-4xl font-black uppercase leading-[1.02] tracking-tighter text-ink-950 sm:text-5xl">
             Give your league a press box.
           </h2>
         </Reveal>
@@ -20,16 +21,16 @@ export function PricingSection() {
             <Reveal key={tier.name} delay={i * 80}>
               <div
                 className={cn(
-                  "flex h-full flex-col rounded-2xl p-8",
+                  "flex h-full flex-col rounded-lg p-8",
                   tier.featured
-                    ? "bg-ink-950 text-paper-100 shadow-[var(--shadow-card-dark)] ring-1 ring-gold-400/40"
+                    ? "bg-ink-950 text-paper-100 shadow-[var(--shadow-card-dark)] ring-1 ring-flare-400/40"
                     : "hairline-paper bg-white text-ink-950",
                 )}
               >
                 {tier.featured && (
-                  <span className="kicker mb-4 w-fit rounded-full bg-gold-400 px-3 py-1 text-[10px] text-ink-950">
+                  <Badge tone="flare" className="mb-4 w-fit">
                     Most Popular
-                  </span>
+                  </Badge>
                 )}
                 <h3 className="font-display text-lg font-bold uppercase tracking-wide">
                   {tier.name}
@@ -64,7 +65,7 @@ export function PricingSection() {
                         tier.featured ? "text-mist-300" : "text-ink-950/65",
                       )}
                     >
-                      <span className={tier.featured ? "text-gold-400" : "text-gold-600"}>
+                      <span className={tier.featured ? "text-flare-400" : "text-flare-600"}>
                         &#10003;
                       </span>
                       {f}

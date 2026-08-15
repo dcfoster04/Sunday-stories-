@@ -1,38 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  /* ---- color: dark / cinematic ---- */
-  --color-ink-950: #08080a;
-  --color-ink-900: #0c0c0f;
-  --color-ink-800: #131318;
-  --color-ink-700: #1b1b21;
-  --color-ink-600: #26262e;
-  --color-ink-500: #3a3a45;
+  /* ---- color: near-black foundation ---- */
+  --color-ink-950: #0a0a0c;
+  --color-ink-900: #101012;
+  --color-ink-850: #141416;
+  --color-ink-800: #19191c;
+  --color-ink-700: #232326;
+  --color-ink-600: #303034;
+  --color-ink-500: #48484d;
 
-  /* ---- color: editorial / paper ---- */
-  --color-paper-100: #fbfaf6;
-  --color-paper-200: #f4f1ea;
-  --color-paper-300: #e9e4d8;
-  --color-paper-400: #d8d1bf;
+  /* ---- color: crisp off-white (editorial, not beige) ---- */
+  --color-paper-100: #faf9f7;
+  --color-paper-200: #f1f0eb;
+  --color-paper-300: #e3e1d8;
+  --color-paper-400: #c9c6ba;
 
-  /* ---- color: accents ---- */
-  --color-gold-300: #f3cf7c;
-  --color-gold-400: #eab84c;
-  --color-gold-500: #dda52b;
-  --color-gold-600: #b7841c;
+  /* ---- color: flare — the one vivid accent ---- */
+  --color-flare-300: #ff9269;
+  --color-flare-400: #ff5a2e;
+  --color-flare-500: #ee4014;
+  --color-flare-600: #c22f0b;
 
-  --color-crimson-400: #e35c47;
-  --color-crimson-500: #d6402c;
-  --color-crimson-600: #ac2f1f;
+  /* ---- color: restrained secondaries (content-type semantics only) ---- */
+  /* crimson: destructive/error only — deliberately muted so it never
+     competes with flare as a second "vivid" color */
+  --color-crimson-400: #c2564a;
+  --color-crimson-500: #a83d30;
+  --color-crimson-600: #832d23;
 
-  --color-ivy-400: #6fae86;
-  --color-ivy-500: #4c8c65;
+  /* cobalt: rare informational accent (e.g. a single dashboard callout) */
+  --color-cobalt-400: #5b7cfa;
+  --color-cobalt-500: #3d5ce0;
+
+  /* ivy: success/confirmation only */
+  --color-ivy-400: #5fa87d;
+  --color-ivy-500: #3f8760;
 
   /* ---- text on dark ---- */
-  --color-mist-100: #f2f1ee;
-  --color-mist-300: #c8c7cd;
-  --color-mist-500: #8b8a94;
-  --color-mist-700: #57565f;
+  --color-mist-100: #f2f2f0;
+  --color-mist-300: #c6c5c1;
+  --color-mist-500: #8a8985;
+  --color-mist-700: #56554f;
 
   /* ---- fonts (--ff-* injected by next/font in layout.tsx) ---- */
   --font-display: var(--ff-display), ui-sans-serif, system-ui, sans-serif;
@@ -43,8 +52,8 @@
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* ---- shadow ---- */
-  --shadow-card: 0 1px 2px rgba(8, 8, 10, 0.04), 0 12px 32px -12px rgba(8, 8, 10, 0.18);
-  --shadow-card-dark: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 48px -16px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 1px 2px rgba(10, 10, 12, 0.05), 0 16px 36px -16px rgba(10, 10, 12, 0.22);
+  --shadow-card-dark: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 56px -18px rgba(0, 0, 0, 0.7);
 }
 
 @layer base {
@@ -65,8 +74,8 @@
   }
 
   ::selection {
-    background-color: var(--color-gold-400);
-    color: var(--color-ink-950);
+    background-color: var(--color-flare-400);
+    color: var(--color-paper-100);
   }
 }
 
@@ -99,56 +108,64 @@
 }
 
 @layer components {
+  /* Uppercase eyebrow/label — the connective tissue of the type system.
+     Deliberately loud (wide tracking, heavy weight) so it reads as a
+     distinct rung of hierarchy from headlines and body copy at a glance. */
   .kicker {
     font-family: var(--font-display);
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
   }
 
+  /* Flat, single-fill progress track — deliberately not a rainbow
+     gradient. The filled portion (accent-colored via background-size +
+     background-image trick below) communicates "how far", not "what mood". */
   .ss-range {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 6px;
+    height: 4px;
     border-radius: 999px;
-    background: linear-gradient(
-      to right,
-      var(--color-ivy-400),
-      var(--color-gold-400) 50%,
-      var(--color-crimson-500)
-    );
+    background: var(--color-ink-800);
     outline: none;
   }
   .ss-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 999px;
-    background: var(--color-ink-950);
+    background: var(--color-flare-400);
     border: 3px solid var(--color-paper-100);
-    box-shadow: 0 2px 8px rgba(8, 8, 10, 0.35);
+    box-shadow: 0 2px 10px rgba(238, 64, 20, 0.45);
     cursor: pointer;
     margin-top: -9px;
   }
   .ss-range::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 999px;
-    background: var(--color-ink-950);
+    background: var(--color-flare-400);
     border: 3px solid var(--color-paper-100);
-    box-shadow: 0 2px 8px rgba(8, 8, 10, 0.35);
+    box-shadow: 0 2px 10px rgba(238, 64, 20, 0.45);
     cursor: pointer;
+    border-radius: 999px;
   }
   .ss-range::-webkit-slider-runnable-track {
-    height: 6px;
+    height: 4px;
     border-radius: 999px;
   }
   .ss-range::-moz-range-track {
-    height: 6px;
+    height: 4px;
     border-radius: 999px;
+    background: var(--color-ink-800);
+  }
+  .ss-range::-moz-range-progress {
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-flare-400);
   }
 }
 

@@ -72,7 +72,7 @@ function OwnerEditor({
   }
 
   return (
-    <div className="rounded-2xl border border-ink-950/10 bg-white p-5">
+    <div className="rounded-lg border border-ink-950/10 bg-white p-5">
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>
           <Label>Name</Label>

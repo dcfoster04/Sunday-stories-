@@ -28,7 +28,7 @@ export function StepShell({
 }) {
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <p className="kicker text-gold-600">{kicker}</p>
+      <p className="kicker text-flare-600">{kicker}</p>
       <h1 className="mt-3 text-balance font-display text-3xl font-black leading-tight tracking-tight text-ink-950 sm:text-4xl">
         {title}
       </h1>

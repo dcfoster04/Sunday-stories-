@@ -59,7 +59,7 @@ export function LeagueSettingsForm({ league }: { league: LeagueFormData }) {
   }
 
   return (
-    <div className="space-y-6 rounded-2xl border border-ink-950/8 bg-white p-6">
+    <div className="space-y-6 rounded-lg border border-ink-950/8 bg-white p-6">
       <div>
         <Label htmlFor="leagueName">League name</Label>
         <Input id="leagueName" value={form.leagueName} onChange={(e) => update({ leagueName: e.target.value })} />

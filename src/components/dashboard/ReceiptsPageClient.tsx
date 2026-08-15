@@ -20,7 +20,7 @@ export function ReceiptsPageClient({
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <p className="kicker text-ink-950/40">Receipts</p>
-          <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tight text-ink-950">
+          <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tighter text-ink-950">
             Receipts
           </h1>
           <p className="mt-2 max-w-lg text-sm text-ink-950/55">
@@ -43,7 +43,8 @@ export function ReceiptsPageClient({
           memories={memories}
           ownerNamesById={ownerNamesById}
           onDeleted={(id) => setMemories((ms) => ms.filter((m) => m.id !== id))}
-          emptyLabel="No receipts yet — quotes and screenshots you add will show up here."
+          emptyTitle="No receipts yet"
+          emptyDescription="Quotes and screenshots you add will show up here."
         />
       </div>
     </div>

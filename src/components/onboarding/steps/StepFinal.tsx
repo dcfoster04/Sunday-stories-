@@ -18,8 +18,8 @@ export function StepFinal({
 }) {
   return (
     <div className="mx-auto w-full max-w-2xl text-center">
-      <p className="kicker text-crimson-500">One last thing.</p>
-      <h1 className="mx-auto mt-3 max-w-xl text-balance font-display text-3xl font-black leading-tight tracking-tight text-ink-950 sm:text-4xl">
+      <p className="kicker text-flare-600">One last thing.</p>
+      <h1 className="mx-auto mt-3 max-w-xl text-balance font-display text-3xl font-black leading-tight tracking-tighter text-ink-950 sm:text-4xl">
         If Sunday Stories were sitting at the bar with your league, what would
         it need to know to fit in?
       </h1>

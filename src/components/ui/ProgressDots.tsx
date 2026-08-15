@@ -20,7 +20,7 @@ export function ProgressBar({
       </div>
       <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-ink-950/8">
         <div
-          className="h-full rounded-full bg-gold-400 transition-[width] duration-500 ease-out"
+          className="h-full rounded-full bg-flare-400 transition-[width] duration-500 ease-out"
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -36,7 +36,7 @@ export function StepDots({ step, total }: { step: number; total: number }) {
           key={i}
           className={cn(
             "h-1.5 rounded-full transition-all duration-300",
-            i + 1 === step ? "w-6 bg-gold-400" : i + 1 < step ? "w-1.5 bg-ink-950/50" : "w-1.5 bg-ink-950/15",
+            i + 1 === step ? "w-6 bg-flare-400" : i + 1 < step ? "w-1.5 bg-ink-950/50" : "w-1.5 bg-ink-950/15",
           )}
         />
       ))}

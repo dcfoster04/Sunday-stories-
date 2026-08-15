@@ -8,8 +8,8 @@ export function Hero() {
     <section className="relative overflow-hidden bg-ink-950 bg-grain pt-10 pb-16 sm:pt-14">
       {/* ambient glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[-10%] h-[520px] w-[900px] -translate-x-1/2 rounded-full opacity-20 blur-[120px]"
-        style={{ background: "radial-gradient(circle, var(--color-gold-400), transparent 70%)" }}
+        className="pointer-events-none absolute left-1/2 top-[-10%] h-[520px] w-[900px] -translate-x-1/2 rounded-full opacity-[0.15] blur-[120px]"
+        style={{ background: "radial-gradient(circle, var(--color-flare-400), transparent 70%)" }}
       />
 
       <div className="relative border-y border-white/10 py-3">
@@ -21,12 +21,12 @@ export function Hero() {
           <Kicker tone="paper" className="justify-center">
             Sunday Stories
           </Kicker>
-          <h1 className="mt-6 text-balance font-display text-[13vw] font-black uppercase leading-[0.95] tracking-tight text-paper-100 sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+          <h1 className="mt-6 text-balance font-display text-[13vw] font-black uppercase leading-[0.92] tracking-tighter text-paper-100 sm:text-6xl md:text-7xl lg:text-[5.5rem]">
             Your fantasy league
             <br />
             has a story.
           </h1>
-          <p className="mt-6 font-serif text-3xl italic text-gold-300 sm:text-4xl">
+          <p className="mt-6 font-serif text-3xl italic text-flare-300 sm:text-4xl">
             We cover it.
           </p>
           <p className="mx-auto mt-8 max-w-xl text-balance text-lg leading-relaxed text-mist-300">

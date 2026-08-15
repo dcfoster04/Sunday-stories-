@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getCurrentLeague } from "@/lib/auth";
-import { Kicker } from "@/components/ui/Card";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 export default async function DashboardStoriesPage() {
   const league = await getCurrentLeague();
@@ -9,7 +9,7 @@ export default async function DashboardStoriesPage() {
   return (
     <div className="mx-auto max-w-3xl">
       <p className="kicker text-ink-950/40">Stories</p>
-      <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tight text-ink-950">
+      <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tighter text-ink-950">
         Stories
       </h1>
       <p className="mt-2 text-sm text-ink-950/55">
@@ -18,23 +18,20 @@ export default async function DashboardStoriesPage() {
       </p>
 
       {league.leagueSummary && (
-        <div className="mt-8 rounded-2xl bg-ink-950 bg-grain p-7">
-          <Kicker tone="gold">Season preview</Kicker>
+        <div className="relative mt-8 overflow-hidden rounded-lg bg-ink-950 bg-grain p-7">
+          <span className="absolute inset-x-0 top-0 h-[3px] bg-flare-400" />
+          <p className="kicker text-flare-400">Season preview</p>
           <p className="mt-3 whitespace-pre-line font-serif text-lg italic leading-relaxed text-paper-100">
             {league.leagueSummary}
           </p>
         </div>
       )}
 
-      <div className="mt-8 rounded-2xl border border-dashed border-ink-950/15 bg-white p-10 text-center">
-        <p className="font-display text-lg font-bold uppercase tracking-wide text-ink-950/40">
-          No weekly stories yet
-        </p>
-        <p className="mx-auto mt-2 max-w-sm text-sm text-ink-950/45">
-          Once your league&rsquo;s season kicks off, Sunday Stories will
-          generate weekly recaps and power rankings here automatically —
-          built on everything in your League Lore.
-        </p>
+      <div className="mt-8">
+        <EmptyState
+          title="No weekly stories yet"
+          description="Once your league's season kicks off, Sunday Stories will generate weekly recaps and power rankings here automatically — built on everything in your League Lore."
+        />
       </div>
     </div>
   );

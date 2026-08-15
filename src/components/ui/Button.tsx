@@ -7,7 +7,7 @@ const base =
 
 const variants = {
   primary:
-    "bg-gold-400 text-ink-950 hover:bg-gold-300 active:scale-[0.98] shadow-[0_1px_0_rgba(255,255,255,0.4)_inset] focus-visible:ring-gold-500 focus-visible:ring-offset-ink-950",
+    "bg-flare-400 text-ink-950 hover:bg-flare-300 active:scale-[0.98] shadow-[0_1px_0_rgba(255,255,255,0.35)_inset] focus-visible:ring-flare-500 focus-visible:ring-offset-ink-950",
   dark: "bg-ink-950 text-paper-100 hover:bg-ink-800 active:scale-[0.98] focus-visible:ring-ink-950 focus-visible:ring-offset-paper-100",
   outline:
     "border border-current text-inherit hover:bg-black/[0.04] active:scale-[0.98] focus-visible:ring-current",

@@ -1,7 +1,8 @@
+import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 const controlBase =
-  "w-full rounded-xl border border-ink-950/10 bg-white px-4 py-3 text-[15px] text-ink-950 placeholder:text-ink-950/35 transition-colors focus:border-ink-950/30 focus:outline-none focus:ring-2 focus:ring-gold-400/50";
+  "w-full rounded-xl border border-ink-950/18 bg-white px-4 py-3 text-[15px] text-ink-950 placeholder:text-ink-950/40 transition-colors focus:border-flare-500 focus:outline-none focus:ring-2 focus:ring-flare-400/40";
 
 export function Label({
   children,
@@ -24,9 +25,11 @@ export function Label({
   );
 }
 
-export function Input({ className, ...props }: React.InputHTMLAttributes<HTMLInputElement>) {
-  return <input className={cn(controlBase, className)} {...props} />;
-}
+export const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
+  function Input({ className, ...props }, ref) {
+    return <input ref={ref} className={cn(controlBase, className)} {...props} />;
+  },
+);
 
 export function Textarea({
   className,

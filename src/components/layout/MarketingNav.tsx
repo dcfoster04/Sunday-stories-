@@ -11,7 +11,7 @@ export function MarketingNav() {
             href="/"
             className="font-display text-lg font-black tracking-tight text-paper-100"
           >
-            SUNDAY<span className="text-gold-400">STORIES</span>
+            SUNDAY<span className="text-flare-400">STORIES</span>
           </Link>
           <nav className="hidden items-center gap-8 md:flex">
             <Link

@@ -41,9 +41,9 @@ export default function DashboardLoginPage() {
       <Container size="narrow" className="max-w-sm">
         <div className="text-center">
           <Link href="/" className="font-display text-lg font-black tracking-tight text-paper-100">
-            SUNDAY<span className="text-gold-400">STORIES</span>
+            SUNDAY<span className="text-flare-400">STORIES</span>
           </Link>
-          <h1 className="mt-6 font-display text-2xl font-black uppercase tracking-tight text-paper-100">
+          <h1 className="mt-6 font-display text-2xl font-black uppercase tracking-tighter text-paper-100">
             Commissioner Sign In
           </h1>
           <p className="mt-2 text-sm text-mist-400">
@@ -74,7 +74,7 @@ export default function DashboardLoginPage() {
           <span className="text-mist-500">
             No key? Access keys are shown once, right after onboarding — check with whoever
             set up your league, or{" "}
-            <Link href="/onboarding" className="text-gold-400 hover:underline">
+            <Link href="/onboarding" className="text-flare-400 hover:underline">
               start a new one
             </Link>
             .

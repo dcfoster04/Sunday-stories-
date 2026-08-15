@@ -20,7 +20,7 @@ export function HeadlineTicker({
             className="font-display text-sm font-bold uppercase tracking-wide text-mist-500"
           >
             {headline}
-            <span className="ml-10 text-gold-400/60">/</span>
+            <span className="ml-10 text-flare-400/70">/</span>
           </span>
         ))}
       </div>
