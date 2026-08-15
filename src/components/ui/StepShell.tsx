@@ -12,6 +12,7 @@ export function StepShell({
   nextLabel = "Continue",
   nextDisabled,
   backLabel = "Back",
+  skipLabel = "Skip",
   hideBack,
 }: {
   kicker: string;
@@ -24,6 +25,7 @@ export function StepShell({
   nextLabel?: string;
   nextDisabled?: boolean;
   backLabel?: string;
+  skipLabel?: string;
   hideBack?: boolean;
 }) {
   return (
@@ -53,7 +55,7 @@ export function StepShell({
           <div className="flex items-center gap-3">
             {onSkip && (
               <Button variant="ghost" onClick={onSkip} className="text-ink-950/45">
-                Skip
+                {skipLabel}
               </Button>
             )}
             {onNext && (
