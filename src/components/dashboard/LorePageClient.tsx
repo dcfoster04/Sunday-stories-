@@ -23,7 +23,7 @@ export function LorePageClient({
     <div>
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <p className="kicker text-ink-950/40">Lore</p>
+          <p className="kicker text-ink-950/40">The Archive</p>
           <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tighter text-ink-950">
             League Lore
           </h1>

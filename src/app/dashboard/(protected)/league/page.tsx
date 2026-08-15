@@ -1,10 +1,16 @@
 import { redirect } from "next/navigation";
 import { getCurrentLeague } from "@/lib/auth";
+import { db } from "@/lib/db";
 import { LeagueSettingsForm } from "@/components/dashboard/LeagueSettingsForm";
+import { ScoutingReportCard } from "@/components/dashboard/ScoutingReportCard";
+import type { LeagueProfileData } from "@/lib/ai/types";
 
 export default async function DashboardLeaguePage() {
   const league = await getCurrentLeague();
   if (!league) redirect("/dashboard/login");
+
+  const profileRow = await db.leagueProfile.findUnique({ where: { leagueId: league.id } });
+  const profile = (profileRow?.data as LeagueProfileData | undefined) ?? null;
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -35,15 +41,7 @@ export default async function DashboardLeaguePage() {
         />
       </div>
 
-      {league.leagueSummary && (
-        <div className="relative mt-10 overflow-hidden rounded-lg bg-ink-950 bg-grain p-6">
-          <span className="absolute inset-x-0 top-0 h-[3px] bg-flare-400" />
-          <p className="kicker text-flare-400">Current scouting report</p>
-          <p className="mt-3 whitespace-pre-line font-serif text-base italic leading-relaxed text-paper-100">
-            {league.leagueSummary}
-          </p>
-        </div>
-      )}
+      <ScoutingReportCard profile={profile} />
     </div>
   );
 }

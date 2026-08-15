@@ -20,8 +20,8 @@ export function MemoryList({
   memories,
   ownerNamesById,
   onDeleted,
-  emptyTitle = "No lore yet",
-  emptyDescription = "Add the first one above.",
+  emptyTitle = "Nothing in the archive yet",
+  emptyDescription = "Add the first entry above — trades, collapses, running jokes, anything worth remembering.",
 }: {
   memories: DashboardMemory[];
   ownerNamesById: Record<string, string>;

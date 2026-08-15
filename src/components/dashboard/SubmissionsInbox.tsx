@@ -38,7 +38,7 @@ export function SubmissionsInbox({
   if (submissions.length === 0) {
     return (
       <EmptyState
-        title="No submissions yet"
+        title="No sources yet"
         description="Share your contribution link with the league to start collecting sources."
       />
     );

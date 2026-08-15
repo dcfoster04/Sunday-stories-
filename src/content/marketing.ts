@@ -65,6 +65,80 @@ export const EXAMPLE_CARDS: ExampleCard[] = [
   },
 ];
 
+// Templates for the homepage "Try It" widget. `{league}` is replaced with
+// whatever the visitor typed (or the placeholder league name). Purely
+// client-side and deterministic — no AI call, no backend, so anyone can
+// play with it before signing up.
+export type TryItTemplate = {
+  kicker: string;
+  tag: string;
+  headline: string;
+  body: string;
+};
+
+export const TRY_IT_TEMPLATES: Record<"espn" | "locker_room" | "savage", TryItTemplate[]> = {
+  espn: [
+    {
+      kicker: "Breaking News",
+      tag: "BREAKING",
+      headline: "{league} Survives Week 1 Behind a Miracle Waiver Pickup",
+      body: "Nobody drafted him. Somebody started him on a hunch. {league} is already writing its own script, and it's only Week 1.",
+    },
+    {
+      kicker: "Breaking News",
+      tag: "BREAKING",
+      headline: "Commissioner of {league} Confirms Trade Deadline Will Not Be Extended Again",
+      body: "For the third consecutive season, at least one manager has requested “just 48 more hours.” For the third consecutive season, the answer is no.",
+    },
+    {
+      kicker: "Power Rankings",
+      tag: "RANKINGS",
+      headline: "{league_poss} Preseason Favorite Already Has a Target on Their Back",
+      body: "Nobody has played a game. Everybody already has a plan to beat them anyway.",
+    },
+  ],
+  locker_room: [
+    {
+      kicker: "Group Chat",
+      tag: "DEVELOPING",
+      headline: "{league} Group Chat Hits 4,000 Unread Messages Before Kickoff",
+      body: "Somebody made a bold prediction. Somebody else screenshotted it. Nobody in {league} has forgotten.",
+    },
+    {
+      kicker: "Group Chat",
+      tag: "DEVELOPING",
+      headline: "{league_poss} Preseason Favorite Already Making Excuses",
+      body: "The season hasn't started. The excuses have. This is going to be a long year for somebody.",
+    },
+    {
+      kicker: "Rivalry Watch",
+      tag: "RIVALRY",
+      headline: "The {league} Rivalry Nobody Can Explain to Outsiders",
+      body: "It doesn't matter who started it. It matters that it's still going, and everyone's picked a side.",
+    },
+  ],
+  savage: [
+    {
+      kicker: "The Collapse",
+      tag: "COLLAPSE",
+      headline: "{league} Manager Loses by 0.4, Immediately Blames Everyone But Himself",
+      body: "The bench outscored the starters. He's not talking about it. We are, in detail, forever.",
+    },
+    {
+      kicker: "Receipts",
+      tag: "QUOTE",
+      headline: "{league_poss} Worst Trade Ever Just Got Worse",
+      body: "Three years later, somebody's still trying to explain it. Nobody in {league} is buying it.",
+    },
+    {
+      kicker: "The Read",
+      tag: "SPOTLIGHT",
+      headline: "{league} Has a Perennial Disaster, and Everyone Knows Exactly Who It Is",
+      body: "New season, same guy. Vegas would not take this bet. We're taking it anyway.",
+    },
+  ],
+};
+
 export const DEMO_STORIES = [
   {
     kicker: "Breaking",

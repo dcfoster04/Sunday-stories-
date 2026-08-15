@@ -43,8 +43,8 @@ export function ReceiptsPageClient({
           memories={memories}
           ownerNamesById={ownerNamesById}
           onDeleted={(id) => setMemories((ms) => ms.filter((m) => m.id !== id))}
-          emptyTitle="No receipts yet"
-          emptyDescription="Quotes and screenshots you add will show up here."
+          emptyTitle="The file is empty"
+          emptyDescription="Quotes and screenshots you add will be held on record."
         />
       </div>
     </div>

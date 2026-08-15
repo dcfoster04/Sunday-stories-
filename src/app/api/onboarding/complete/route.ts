@@ -5,7 +5,8 @@ import { buildMemoryDrafts } from "@/lib/onboarding";
 import { saveDataUrlImage } from "@/lib/uploads";
 import { setCommissionerCookie } from "@/lib/auth";
 import { generateInviteSlug, generateCommissionerToken } from "@/lib/utils";
-import { generateLeagueScoutingReport } from "@/lib/ai/service";
+import { generateLeagueProfile } from "@/lib/ai/service";
+import { buildLeagueProfileInput } from "@/lib/leagueProfile";
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -83,26 +84,14 @@ export async function POST(request: Request) {
   const owners = await db.owner.findMany({ where: { leagueId: league.id } });
   const memories = await db.leagueMemory.findMany({ where: { leagueId: league.id } });
 
-  const scoutingReport = await generateLeagueScoutingReport({
-    leagueName: league.leagueName,
-    leagueAge: league.leagueAge,
-    tone: league.tone,
-    toneCustom: league.toneCustom,
-    seriousness: league.seriousness,
-    boundaries: league.boundaries,
-    fitInAnswer: league.fitInAnswer,
-    owners: owners.map((o) => ({
-      ownerName: o.ownerName,
-      teamName: o.teamName,
-      managerDescription: o.managerDescription,
-      archetypes: (o.archetypes as string[]) ?? [],
-    })),
-    memories: memories.map((m) => ({ type: m.type, title: m.title, description: m.description })),
-  });
+  const profile = await generateLeagueProfile(buildLeagueProfileInput(league, owners, memories));
 
+  await db.leagueProfile.create({
+    data: { leagueId: league.id, data: profile },
+  });
   await db.league.update({
     where: { id: league.id },
-    data: { leagueSummary: scoutingReport },
+    data: { leagueSummary: profile.openingLine },
   });
 
   await setCommissionerCookie(commissionerToken);
@@ -110,6 +99,6 @@ export async function POST(request: Request) {
   return NextResponse.json({
     leagueName: league.leagueName,
     inviteSlug: league.inviteSlug,
-    scoutingReport,
+    profile,
   });
 }

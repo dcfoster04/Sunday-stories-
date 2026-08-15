@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { href: "/dashboard/people", label: "People" },
   { href: "/dashboard/lore", label: "Lore" },
   { href: "/dashboard/receipts", label: "Receipts" },
-  { href: "/dashboard/stories", label: "Stories" },
+  { href: "/dashboard/stories", label: "Newsroom" },
 ] as const;
 
 export function DashboardChrome({

@@ -14,7 +14,7 @@ export default async function DashboardPeoplePage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <p className="kicker text-ink-950/40">People</p>
+      <p className="kicker text-ink-950/40">The Roster</p>
       <h1 className="mt-2 font-display text-3xl font-black uppercase tracking-tighter text-ink-950">
         Manager Profiles
       </h1>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Label, Input, Textarea } from "@/components/ui/Field";
 import { Chip } from "@/components/ui/Chip";
 import { Button } from "@/components/ui/Button";
+import { EmptyState } from "@/components/ui/EmptyState";
 import { ARCHETYPES, MAX_ARCHETYPES_PER_OWNER } from "@/lib/types";
 
 export type DashboardOwner = {
@@ -216,7 +217,10 @@ export function OwnerManager({ initialOwners }: { initialOwners: DashboardOwner[
       )}
 
       {owners.length === 0 && !adding && (
-        <p className="text-center text-sm text-ink-950/40">No managers yet.</p>
+        <EmptyState
+          title="No managers on the roster"
+          description="Add your first manager above — every profile here shapes how Sunday Stories writes about that person."
+        />
       )}
     </div>
   );

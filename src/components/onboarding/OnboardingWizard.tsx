@@ -11,10 +11,11 @@ import { Step5Receipts } from "./steps/Step5Receipts";
 import { StepFinal } from "./steps/StepFinal";
 import { Completion } from "./Completion";
 import { EMPTY_STATE, DRAFT_STORAGE_KEY, type OnboardingState } from "./state";
+import type { LeagueProfileData } from "@/lib/ai/types";
 
 const TOTAL_STEPS = 6;
 
-type SubmitResult = { leagueName: string; scoutingReport: string; inviteSlug: string };
+type SubmitResult = { leagueName: string; profile: LeagueProfileData; inviteSlug: string };
 
 export function OnboardingWizard() {
   const [step, setStep] = useState(0);
@@ -102,7 +103,7 @@ export function OnboardingWizard() {
         <Container size="narrow">
           <Completion
             leagueName={result.leagueName}
-            scoutingReport={result.scoutingReport}
+            profile={result.profile}
             inviteSlug={result.inviteSlug}
           />
         </Container>
