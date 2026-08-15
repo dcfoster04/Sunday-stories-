@@ -1,0 +1,119 @@
+// Sunday Stories — data model
+//
+// SQLite is the local/dev datasource (zero-infra, file-based) and is wired
+// through `prisma.config.ts` + DATABASE_URL. Swapping to Postgres/Supabase
+// for production is a two-line change: `datasource.provider` here, and
+// DATABASE_URL in the environment — see PROJECT_NOTES.md.
+//
+// SQLite has no native enum or scalar-list support, so fields that are
+// conceptually enums/arrays are typed String/Json here and validated
+// against shared TS unions + zod schemas in `src/lib/validation`
+// (`src/lib/types.ts` is the source of truth for the literal values).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+/// A fantasy league that has onboarded with Sunday Stories.
+model League {
+  id       String @id @default(cuid())
+
+  leagueName  String
+  platform    String // sleeper | espn | yahoo | nfl | cbs | other
+  leagueAge   String // first_year | two_to_three | four_to_six | seven_to_ten | ten_plus
+  seriousness Int    @default(50) // 0 (casual) .. 100 (we have problems)
+  tone        String // espn | locker_room | savage | custom
+  toneCustom  String?
+  boundaries  String? // topics Sunday Stories should never joke about
+
+  fitInAnswer   String? // "what would SS need to know to fit in at the bar"
+  leagueSummary String? // generated scouting report (AI or mock)
+
+  inviteSlug        String @unique // public /join/[slug] contribution link
+  commissionerToken String @unique // bearer secret for /dashboard auth
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  owners      Owner[]
+  memories    LeagueMemory[]
+  submissions MemberSubmission[]
+
+  @@index([inviteSlug])
+}
+
+/// A fantasy manager / team owner within a league.
+model Owner {
+  id       String @id @default(cuid())
+  leagueId String
+  league   League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+
+  ownerName          String
+  teamName           String?
+  favoriteNflTeam    String?
+  managerDescription String? // "one thing we should know about this person"
+  archetypes         Json // string[] of personality tags — always pass [] explicitly on create
+  extraNotes         String?
+  reputationSummary  String? // rolling AI-maintained summary, mocked for now
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  submissions MemberSubmission[]
+
+  @@index([leagueId])
+}
+
+/// A durable piece of league narrative: trade, collapse, quote, rivalry,
+/// running joke, prediction, etc. This is the single retrieval surface
+/// future story-generation functions read from.
+model LeagueMemory {
+  id       String @id @default(cuid())
+  leagueId String
+  league   League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+
+  type        String // TRADE | CHAMPIONSHIP | COLLAPSE | QUOTE | RIVALRY | PUNISHMENT | CONTROVERSY | RUNNING_JOKE | PREDICTION | DRAFT | OTHER
+  title       String
+  description String
+
+  peopleInvolved Json // Owner.id[] (or free-text names) — always pass [] explicitly on create
+
+  seasonOrYear String? // "2022", "Week 11, 2023", freeform
+  importance   Int     @default(2) // 1 (minor) .. 3 (legendary)
+  source       String? // "onboarding" | "dashboard" | "member_submission:<id>" | freeform context
+
+  imageUrl String? // optional screenshot receipt
+
+  attributionAllowed Boolean @default(true)
+  canBeUsedForJokes  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([leagueId])
+  @@index([leagueId, type])
+}
+
+/// A league member's answers from the /join/[slug] contribution flow.
+model MemberSubmission {
+  id       String @id @default(cuid())
+  leagueId String
+  league   League @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+
+  submittingOwnerId String?
+  submittingOwner   Owner?  @relation(fields: [submittingOwnerId], references: [id], onDelete: SetNull)
+
+  answers              Json // { selfDescription, overratedOwnerId, overratedWhy, ... }
+  anonymousPreferences Json // { [questionKey]: boolean } — true = keep anonymous, always pass {} explicitly
+
+  reviewedByCommissioner Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([leagueId])
+}
